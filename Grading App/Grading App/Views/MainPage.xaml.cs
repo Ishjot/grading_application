@@ -27,13 +27,32 @@ namespace Grading_App.Views
             this.InitializeComponent();
         }
 
-        private async void button_Click(object sender, RoutedEventArgs e)
+        private List<Tuple<string, int>> _students = new List<Tuple<string, int>>()
         {
-            MediaElement mediaElement = new MediaElement();
-            var synth = new Windows.Media.SpeechSynthesis.SpeechSynthesizer();
-            Windows.Media.SpeechSynthesis.SpeechSynthesisStream stream = await synth.SynthesizeTextToStreamAsync("Hello, World!");
-            mediaElement.SetSource(stream, stream.ContentType);
-            mediaElement.Play();
+            new Tuple<string, int>("Allan Smith", 70),
+            new Tuple<string, int>("Denise Orozco", 70),
+            new Tuple<string, int>("Drew Seward", 70),
+            new Tuple<string, int>("Ishjot Walia", 70),
+            new Tuple<string, int>("Jim Gilmartin", 70),
+            new Tuple<string, int>("Juan J. Ramirez", 70),
+            new Tuple<string, int>("Kelli Kearns", 70),
+            new Tuple<string, int>("Lucas Rowley", 70),
+            new Tuple<string, int>("Nolan Blew", 70),
+            new Tuple<string, int>("Riley Herman", 70),
+            new Tuple<string, int>("Sam Close", 70),
+            new Tuple<string, int>("Shayon Javadizadeh", 70),
+            new Tuple<string, int>("Terrence Cole", 70),
+            new Tuple<string, int>("Tim Weyel", 70),
+            new Tuple<string, int>("Zac Stringham", 70),
+            new Tuple<string, int>("Crystal Ophaso", 70),
+            new Tuple<string, int>("Matthre Glodack", 70),
+            new Tuple<string, int>("Tracy Mcalphin", 70),
+        };
+
+        public List<Tuple<string, int>> Students
+        {
+            get { return _students; }
         }
+
     }
 }
