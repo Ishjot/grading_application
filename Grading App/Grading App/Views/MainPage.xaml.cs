@@ -25,34 +25,34 @@ namespace Grading_App.Views
         public MainPage()
         {
             this.InitializeComponent();
+
+            var Rand = new Random();
+            Students = new List<Tuple<string, int>> { new Tuple<string, int>("Allan Smith", Rand.Next(0,100)),
+            new Tuple<string, int>("Denise Orozco", Rand.Next(0,100)),
+            new Tuple<string, int>("Drew Seward", Rand.Next(0,100)),
+            new Tuple<string, int>("Ishjot Walia", Rand.Next(0,100)),
+            new Tuple<string, int>("Jim Gilmartin", Rand.Next(0,100)),
+            new Tuple<string, int>("Juan J. Ramirez", Rand.Next(0,100)),
+            new Tuple<string, int>("Kelli Kearns", Rand.Next(0,100)),
+            new Tuple<string, int>("Lucas Rowley", Rand.Next(0,100)),
+            new Tuple<string, int>("Nolan Blew", Rand.Next(0,100)),
+            new Tuple<string, int>("Riley Herman", Rand.Next(0,100)),
+            new Tuple<string, int>("Sam Close", Rand.Next(0,100)),
+            new Tuple<string, int>("Shayon Javadizadeh", Rand.Next(0,100)),
+            new Tuple<string, int>("Terrence Cole", Rand.Next(0,100)),
+            new Tuple<string, int>("Tim Weyel", Rand.Next(0,100)),
+            new Tuple<string, int>("Zac Stringham", Rand.Next(0,100)),
+            new Tuple<string, int>("Crystal Ophaso", Rand.Next(0,100)),
+            new Tuple<string, int>("Matthre Glodack", Rand.Next(0,100)),
+            new Tuple<string, int>("Tracy Mcalphin", Rand.Next(0,100)) };
+
         }
 
-        private List<Tuple<string, int>> _students = new List<Tuple<string, int>>()
-        {
-            new Tuple<string, int>("Allan Smith", 70),
-            new Tuple<string, int>("Denise Orozco", 70),
-            new Tuple<string, int>("Drew Seward", 70),
-            new Tuple<string, int>("Ishjot Walia", 70),
-            new Tuple<string, int>("Jim Gilmartin", 70),
-            new Tuple<string, int>("Juan J. Ramirez", 70),
-            new Tuple<string, int>("Kelli Kearns", 70),
-            new Tuple<string, int>("Lucas Rowley", 70),
-            new Tuple<string, int>("Nolan Blew", 70),
-            new Tuple<string, int>("Riley Herman", 70),
-            new Tuple<string, int>("Sam Close", 70),
-            new Tuple<string, int>("Shayon Javadizadeh", 70),
-            new Tuple<string, int>("Terrence Cole", 70),
-            new Tuple<string, int>("Tim Weyel", 70),
-            new Tuple<string, int>("Zac Stringham", 70),
-            new Tuple<string, int>("Crystal Ophaso", 70),
-            new Tuple<string, int>("Matthre Glodack", 70),
-            new Tuple<string, int>("Tracy Mcalphin", 70),
-        };
+        public List<Tuple<string, int>> Students { get; }
 
-        public List<Tuple<string, int>> Students
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            get { return _students; }
+
         }
-
     }
 }

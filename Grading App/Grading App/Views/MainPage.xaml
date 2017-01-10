@@ -24,15 +24,25 @@
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="*"/>
                 </Grid.RowDefinitions>
-                <TextBlock Grid.Row="0" Text="Students" FontSize="30" HorizontalAlignment="Center" />
-                <ListBox Grid.Row="1" ItemsSource="{Binding ElementName=MainPageControl, Path=Students}"
-                         DisplayMemberPath="Item1"/>
+                <TextBlock Text="Students" FontSize="30" HorizontalAlignment="Center" />
+                <ListBox Name="StudentList" Grid.Row="1" ItemsSource="{Binding ElementName=MainPageControl, Path=Students}"
+                         DisplayMemberPath="Item1" SelectedValuePath="Item2" SelectionChanged="ListBox_SelectionChanged"/>
             </Grid>
         </Border>
 
-        
 
-        <Border Grid.Column ="1" Background="#1f3d7a"/>
+
+        <Border Grid.Column ="1" Background="#1f3d7a">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Text="Grades" FontSize="30" HorizontalAlignment="Center" />
+                <TextBlock Grid.Row="1" Text="{Binding SelectedValue, ElementName=StudentList}" FontSize="200"
+                           HorizontalAlignment="Center" VerticalAlignment="Center"/>
+            </Grid>
+        </Border>
         <Border Grid.Row="1" Grid.ColumnSpan="2" Background="#152951"/>
     </Grid>
 </Page>
