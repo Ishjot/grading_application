@@ -42,11 +42,11 @@ namespace Grading_App.ViewModels
         }
 
         public ObservableCollection<Student> Students { get; }
-        int _grade;
-        public int Grade
+        Student _selectedStudent;
+        public Student SelectedStudent
         {
-            get { return _grade; }
-            set { SetProperty(ref _grade, value); }
+            get { return _selectedStudent; }
+            set { SetProperty(ref _selectedStudent, value); }
         }
 
         public ICommand DeleteCommand
