@@ -29,6 +29,12 @@ namespace Grading_App
             return Task.FromResult<object>(null);
         }
 
+        protected override Task OnInitializeAsync(IActivatedEventArgs args)
+        {
+        //    Container.RegisterType
+            return base.OnInitializeAsync(args);
+        }
+
         protected override UIElement CreateShell(Frame rootFrame)
         {
             return Container.TryResolve<Views.MainPage>();
