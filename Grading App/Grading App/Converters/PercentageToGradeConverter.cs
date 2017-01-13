@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Data;
 
 namespace Grading_App.Converters
@@ -11,6 +12,7 @@ namespace Grading_App.Converters
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
+            if (!(value is double)) return DependencyProperty.UnsetValue;
             double percentage = (double) value;
             if (percentage >= 0.9)
             {

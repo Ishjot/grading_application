@@ -10,9 +10,9 @@
         <converters:DoubleToFormattedStringConverter x:Key="DoubleToFormattedStringConverter" />
         <converters:PercentageToGradeConverter x:Key="PercentageToGradeConverter" />
         <converters:PointsToPercentageConverter x:Key="PointsToPercentageConverter" />
-        <!--<converters:ValueConverterChain x:Key="PointsToGradeConverter">
+        <converters:ValueConverterChain x:Key="PointsToGradeConverter">
             <converters:PointsToPercentageConverter />
             <converters:PercentageToGradeConverter />
-        </converters:ValueConverterChain>-->
+        </converters:ValueConverterChain>
     </prismUnity:PrismUnityApplication.Resources>
 </prismUnity:PrismUnityApplication>

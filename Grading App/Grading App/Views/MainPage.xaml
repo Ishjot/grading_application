@@ -34,18 +34,17 @@
                         <Run Text="Percentage: " />
                         <Run Text="{Binding Percentage, Converter={StaticResource DoubleToFormattedStringConverter}}" />
                     </TextBlock>
-                    <TextBlock  Margin="10" >
-                        <Run Text="Grade: " />
-                        <Run Text="{Binding Percentage, Converter={StaticResource PercentageToGradeConverter}}">
-                            <!--<interactivity:Interaction.Behaviors>
-                                <behaviors:MultiBindingBehavior PropertyName="Text" Converter="{StaticResource PointsToGradeConverter}">
-                                    <behaviors:MultiBindingItem Value="Hello, World!" />
-                                    <behaviors:MultiBindingItem Value="{Binding AchievedPoints}" />
-                                    <behaviors:MultiBindingItem Value="{Binding TotalPoints}" />
-                                </behaviors:MultiBindingBehavior>
-                            </interactivity:Interaction.Behaviors>-->
-                        </Run>
-                    </TextBlock>
+                    <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
+                        <TextBlock  Margin="10" Text="Grade: " />
+                        <TextBlock Margin="10">
+                                <interactivity:Interaction.Behaviors>
+                                    <behaviors:MultiBindingBehavior PropertyName="Text" Converter="{StaticResource PointsToGradeConverter}">
+                                        <behaviors:MultiBindingItem Value="{Binding AchievedPoints, UpdateSourceTrigger=PropertyChanged}" />
+                                        <behaviors:MultiBindingItem Value="{Binding TotalPoints}" />
+                                    </behaviors:MultiBindingBehavior>
+                                </interactivity:Interaction.Behaviors>
+                        </TextBlock>
+                    </StackPanel>
                 </StackPanel>
             </Grid>
         </DataTemplate>

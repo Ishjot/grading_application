@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Windows.UI.Xaml.Data;
 using System.Globalization;
+using Windows.UI.Xaml;
 
 namespace Grading_App.Converters
 {
@@ -13,9 +14,11 @@ namespace Grading_App.Converters
     {
         public override object Convert(object[] values, Type targetType, object parameter, CultureInfo culture)
         {
-            var achievedPoints = (double) values[0];
-            var totalPoints = (double) values[1];
-            return achievedPoints / totalPoints;
+            if (values.Any(value => value == null)) return DependencyProperty.UnsetValue;
+
+            var achievedPoints = (int)values[0];
+            var totalPoints = (int)values[1];
+            return (double)achievedPoints / totalPoints;
         }
 
 
