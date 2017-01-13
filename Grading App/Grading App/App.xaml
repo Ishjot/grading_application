@@ -14,5 +14,9 @@
             <converters:PointsToPercentageConverter />
             <converters:PercentageToGradeConverter />
         </converters:ValueConverterChain>
+        <converters:ValueConverterChain x:Key="PointsToFormattedPercentageConverter">
+            <converters:PointsToPercentageConverter />
+            <converters:DoubleToFormattedStringConverter />
+        </converters:ValueConverterChain>
     </prismUnity:PrismUnityApplication.Resources>
 </prismUnity:PrismUnityApplication>

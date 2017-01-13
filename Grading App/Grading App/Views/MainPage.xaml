@@ -30,10 +30,17 @@
                         <Run Text="/" />
                         <Run Text="{Binding TotalPoints}" />
                     </TextBlock>
-                    <TextBlock Margin="10">
-                        <Run Text="Percentage: " />
-                        <Run Text="{Binding Percentage, Converter={StaticResource DoubleToFormattedStringConverter}}" />
-                    </TextBlock>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Margin="10" Text="Percentage" />
+                        <TextBlock Margin="10">
+                                <interactivity:Interaction.Behaviors>
+                                    <behaviors:MultiBindingBehavior PropertyName="Text" Converter="{StaticResource PointsToFormattedPercentageConverter}">
+                                        <behaviors:MultiBindingItem Value="{Binding AchievedPoints, UpdateSourceTrigger=PropertyChanged}" />
+                                        <behaviors:MultiBindingItem Value="{Binding TotalPoints}" />
+                                    </behaviors:MultiBindingBehavior>
+                                </interactivity:Interaction.Behaviors>
+                        </TextBlock>
+                    </StackPanel>
                     <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" VerticalAlignment="Bottom">
                         <TextBlock  Margin="10" Text="Grade: " />
                         <TextBlock Margin="10">

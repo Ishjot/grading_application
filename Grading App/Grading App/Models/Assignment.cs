@@ -37,10 +37,11 @@ namespace Grading_App.Models
             get { return _totalPoints; }
             set
             {
-                if (SetProperty(ref _totalPoints, value))
-                {
-                    OnPropertyChanged(nameof(Percentage));
-                }
+                //if (SetProperty(ref _totalPoints, value))
+                //{
+                //    OnPropertyChanged(nameof(Percentage));
+                //}
+                SetProperty(ref _totalPoints, value);
             }
         }
 
@@ -50,17 +51,12 @@ namespace Grading_App.Models
             get { return _achievedPoints; }
             set
             {
-                if (SetProperty(ref _achievedPoints, value))
-                {
-                    OnPropertyChanged(nameof(Percentage));
-                }
-               
+                //if (SetProperty(ref _achievedPoints, value))
+                //{
+                //    OnPropertyChanged(nameof(Percentage));
+                //}
+                SetProperty(ref _achievedPoints, value);
             }
-        }
-
-        public double Percentage
-        {
-            get { return (double) AchievedPoints / TotalPoints; }
         }
 
     }
