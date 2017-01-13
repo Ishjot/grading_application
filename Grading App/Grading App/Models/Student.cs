@@ -15,11 +15,11 @@ namespace Grading_App.Models
             get { return _name; }
             set { SetProperty(ref _name, value); }
         }
-        int _grade;
-        public int Grade
+        IList<Assignment> _assignments;
+        public IList<Assignment> Assignments
         {
-            get { return _grade; }
-            set { SetProperty(ref _grade, value); }
+            get { return _assignments; }
+            set { SetProperty(ref _assignments, value); }
         }
     }
 }

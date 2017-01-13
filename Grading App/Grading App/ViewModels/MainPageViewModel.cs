@@ -13,32 +13,42 @@ namespace Grading_App.ViewModels
 {
     public class MainPageViewModel : BindableBase
     {
+        private static Random Rand = new Random();
         public MainPageViewModel()
         {
             DeleteCommand = new DelegateCommand(_Delete, _CanDelete);
             IncreaseGradeCommand = new DelegateCommand(_IncreaseGrade);
-            var Rand = new Random();
             Students = new ObservableCollection<Student>
             {
-            new Student { Name = "Allan Smith", Grade = Rand.Next(0,100) },
-            new Student { Name = "Denise Orozco", Grade = Rand.Next(0,100) },
-            new Student { Name = "Drew Seward", Grade = Rand.Next(0,100) },
-            new Student { Name = "Ishjot Walia", Grade = Rand.Next(0,100) },
-            new Student { Name = "Jim Gilmartin", Grade = Rand.Next(0,100) },
-            new Student { Name = "Juan J. Ramirez", Grade = Rand.Next(0,100) },
-            new Student { Name = "Kelli Kearns", Grade = Rand.Next(0,100) },
-            new Student { Name = "Lucas Rowley", Grade = Rand.Next(0,100) },
-            new Student { Name = "Nolan Blew", Grade = Rand.Next(0,100) },
-            new Student { Name = "Riley Herman", Grade = Rand.Next(0,100) },
-            new Student { Name = "Sam Close", Grade = Rand.Next(0,100) },
-            new Student { Name = "Shayon Javadizadeh", Grade = Rand.Next(0,100) },
-            new Student { Name = "Terrence Cole", Grade = Rand.Next(0,100) },
-            new Student { Name = "Tim Weyel", Grade = Rand.Next(0,100) },
-            new Student { Name = "Zac Stringham", Grade = Rand.Next(0,100) },
-            new Student { Name = "Crystal Ophaso", Grade = Rand.Next(0,100) },
-            new Student { Name = "Matthre Glodack", Grade = Rand.Next(0,100) },
-            new Student { Name = "Tracy Mcalphin", Grade = Rand.Next(0,100) }
+            new Student { Name = "Allan Smith", Assignments = new List<Assignment>() },
+            new Student { Name = "Denise Orozco", Assignments = new List<Assignment>() },
+            new Student { Name = "Drew Seward", Assignments = new List<Assignment>() },
+            new Student { Name = "Ishjot Walia", Assignments = new List<Assignment>() },
+            new Student { Name = "Jim Gilmartin", Assignments = new List<Assignment>() },
+            new Student { Name = "Juan J. Ramirez", Assignments = new List<Assignment>() },
+            new Student { Name = "Kelli Kearns", Assignments = new List<Assignment>() },
+            new Student { Name = "Lucas Rowley", Assignments = new List<Assignment>() },
+            new Student { Name = "Nolan Blew", Assignments = new List<Assignment>() },
+            new Student { Name = "Riley Herman", Assignments = new List<Assignment>() },
+            new Student { Name = "Sam Close", Assignments = new List<Assignment>() },
+            new Student { Name = "Shayon Javadizadeh", Assignments = new List<Assignment>() },
+            new Student { Name = "Terrence Cole", Assignments = new List<Assignment>() },
+            new Student { Name = "Tim Weyel", Assignments = new List<Assignment>() },
+            new Student { Name = "Zac Stringham", Assignments = new List<Assignment>() },
+            new Student { Name = "Crystal Ophaso", Assignments = new List<Assignment>() },
+            new Student { Name = "Matthre Glodack", Assignments = new List<Assignment>() },
+            new Student { Name = "Tracy Mcalphin", Assignments = new List<Assignment>() }
             };
+
+            string name;
+            for(int i = 0; i < Students.Count; i++)
+            {
+                for (int j = 0; j < 20; j++)
+                {
+                    name = "Assignment #" + (j+1);
+                    Students.ElementAt(i).Assignments.Add(new Assignment(name, Rand.Next(10, 100)));
+                }
+            }
         }
 
         public ObservableCollection<Student> Students { get; }
@@ -64,7 +74,10 @@ namespace Grading_App.ViewModels
             var shayon = Students.FirstOrDefault(student => student.Name == "Shayon Javadizadeh");
             if (shayon != null)
             {
-                shayon.Grade += 10;
+                for(int i = 0; i < shayon.Assignments.Count; i++)
+                {
+                    shayon.Assignments.ElementAt(i).addAchievedPoints(2);
+                }
             }
         }
 

@@ -95,6 +95,11 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Converters\DoubleToFormattedStringConverter.cs" />
+    <Compile Include="Converters\PercentageToGradeConverter.cs" />
+    <Compile Include="Converters\PointsToPercentageConverter.cs" />
+    <Compile Include="Converters\ValueConverterChain.cs" />
+    <Compile Include="Models\Assignment.cs" />
     <Compile Include="Models\Student.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="Views\MainPage.xaml.cs">
