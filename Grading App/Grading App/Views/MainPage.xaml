@@ -24,12 +24,10 @@
                     <Run Text="{Binding Name}" />
                 </TextBlock>
                 <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
-                    <TextBlock Margin="10">
-                        <Run Text="Points: " />
-                        <Run Text="{Binding AchievedPoints}" />
-                        <Run Text="/" />
-                        <Run Text="{Binding TotalPoints}" />
-                    </TextBlock>
+                    <TextBlock Margin="10" Text="Points: " />
+                    <TextBox Text="{Binding AchievedPoints, Mode=TwoWay}" />
+                    <TextBlock Text="/" />
+                    <TextBlock Text="{Binding TotalPoints}" />
                     <StackPanel Orientation="Horizontal">
                         <TextBlock Margin="10" Text="Percentage" />
                         <TextBlock Margin="10">
