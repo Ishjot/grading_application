@@ -1,23 +1,26 @@
 ﻿using Grading_App.Models;
 using Prism.Commands;
-using Prism.Mvvm;
+using Prism.Windows.Mvvm;
+using Prism.Windows.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Input;
 
 namespace Grading_App.ViewModels
 {
-    public class MainPageViewModel : BindableBase
+    public class MainPageViewModel : ViewModelBase
     {
-        private static Random Rand = new Random();
-        public MainPageViewModel()
+        static Random Rand = new Random();
+        readonly INavigationService _navigationService;
+
+        public MainPageViewModel(INavigationService navigationService)
         {
+            _navigationService = navigationService;
             DeleteCommand = new DelegateCommand(_Delete, _CanDelete);
             IncreaseGradeCommand = new DelegateCommand(_IncreaseGrade);
+            AddAssignmentCommand = new DelegateCommand(_AddAssignment);
             Students = new ObservableCollection<Student>
             {
             new Student { Name = "Allan Smith", Assignments = new List<Assignment>() },
@@ -49,6 +52,19 @@ namespace Grading_App.ViewModels
                     Students.ElementAt(i).Assignments.Add(new Assignment(name, Rand.Next(10, 100)));
                 }
             }
+        }
+
+        public override void OnNavigatedTo(NavigatedToEventArgs e, 
+            Dictionary<string, object> viewModelState)
+        {
+            base.OnNavigatedTo(e, viewModelState);
+        }
+
+        public override void OnNavigatingFrom(NavigatingFromEventArgs e,
+            Dictionary<string, object> viewModelState, bool suspending)
+        {
+            e.Parameter = SelectedStudent;
+            base.OnNavigatingFrom(e, viewModelState, suspending);
         }
 
         public ObservableCollection<Student> Students { get; }
@@ -98,7 +114,7 @@ namespace Grading_App.ViewModels
 
         void _AddAssignment()
         {
-
+            _navigationService.Navigate("AddAssignment", null);
         }
 
     }
