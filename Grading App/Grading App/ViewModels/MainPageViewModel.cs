@@ -69,16 +69,9 @@ namespace Grading_App.ViewModels
             get;
         }
 
-        void _IncreaseGrade()
+        public ICommand AddAssignmentCommand
         {
-            var shayon = Students.FirstOrDefault(student => student.Name == "Shayon Javadizadeh");
-            if (shayon != null)
-            {
-                for(int i = 0; i < shayon.Assignments.Count; i++)
-                {
-                    shayon.Assignments.ElementAt(i).addAchievedPoints(2);
-                }
-            }
+            get;
         }
 
         void _Delete()
@@ -89,6 +82,23 @@ namespace Grading_App.ViewModels
         bool _CanDelete()
         {
             return Students.Any();
+        }
+
+        void _IncreaseGrade()
+        {
+            var shayon = Students.FirstOrDefault(student => student.Name == "Shayon Javadizadeh");
+            if (shayon != null)
+            {
+                for (int i = 0; i < shayon.Assignments.Count; i++)
+                {
+                    shayon.Assignments.ElementAt(i).addAchievedPoints(2);
+                }
+            }
+        }
+
+        void _AddAssignment()
+        {
+
         }
 
     }

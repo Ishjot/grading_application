@@ -101,6 +101,7 @@
         <StackPanel Grid.Row="1" Orientation="Horizontal">
             <Button Content="Delete First" Margin="10" Command="{Binding DeleteCommand}" />
             <Button Content="Increase Grade" Margin="10" Command="{Binding IncreaseGradeCommand}" />
+            <Button Content="Add Assignment" Margin="10" Command="{Binding AddAssignmentCommand}" />
         </StackPanel>
     </Grid>
 </Page>
