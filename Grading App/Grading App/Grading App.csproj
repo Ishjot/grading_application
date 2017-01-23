@@ -101,7 +101,7 @@
     <Compile Include="Converters\ValueConverterChain.cs" />
     <Compile Include="Models\Assignment.cs" />
     <Compile Include="Models\Student.cs" />
-    <Compile Include="ViewModels\AddAssignmentViewModel.cs" />
+    <Compile Include="ViewModels\AddAssignmentPageViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="Views\AddAssignmentPage.xaml.cs">
       <DependentUpon>AddAssignmentPage.xaml</DependentUpon>

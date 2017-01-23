@@ -1,20 +1,16 @@
 ﻿using Grading_App.Models;
 using Prism.Windows.Mvvm;
 using Prism.Windows.Navigation;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Grading_App.ViewModels
 {
-    class AddAssignmentViewModel : ViewModelBase
+    class AddAssignmentPageViewModel : ViewModelBase
     {
         readonly INavigationService _navigationService;
         Student _selectedStudent;
 
-        public AddAssignmentViewModel(INavigationService navigationService)
+        public AddAssignmentPageViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
         }
@@ -23,7 +19,7 @@ namespace Grading_App.ViewModels
         {
             base.OnNavigatedTo(e, viewModelState);
 
-            if (e != null)
+            if (e.Parameter != null)
             {
                 SelectedStudent = e.Parameter as Student;
             }
