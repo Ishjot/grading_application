@@ -1,7 +1,9 @@
 ﻿using Grading_App.Models;
+using Prism.Commands;
 using Prism.Windows.Mvvm;
 using Prism.Windows.Navigation;
 using System.Collections.Generic;
+using System.Windows.Input;
 
 namespace Grading_App.ViewModels
 {
@@ -13,6 +15,7 @@ namespace Grading_App.ViewModels
         public AddAssignmentPageViewModel(INavigationService navigationService)
         {
             _navigationService = navigationService;
+            MainPageNavigationCommand = new DelegateCommand(_MainPageNavigation);
         }
 
         public override void OnNavigatedTo(NavigatedToEventArgs e, Dictionary<string, object> viewModelState)
@@ -34,6 +37,16 @@ namespace Grading_App.ViewModels
         {
             get { return _selectedStudent; }
             set { SetProperty(ref _selectedStudent, value); }
+        }
+
+        public ICommand MainPageNavigationCommand
+        {
+            get;
+        }
+
+        void _MainPageNavigation()
+        {
+            _navigationService.Navigate("Main", SelectedStudent);
         }
 
     }

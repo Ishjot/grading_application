@@ -12,9 +12,9 @@
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center" DataContext="{Binding SelectedStudent}">
+        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
             <TextBlock Text="Hello, World!" VerticalAlignment="Center" HorizontalAlignment="Center" />
-            <TextBlock Text="{Binding Name}" />
+            <Button Content="Back To Gradebook" Margin="10" Command="{Binding MainPageNavigationCommand}" />
         </StackPanel>
     </Grid>
 </Page>

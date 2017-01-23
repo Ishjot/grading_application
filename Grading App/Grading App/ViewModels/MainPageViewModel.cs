@@ -20,7 +20,7 @@ namespace Grading_App.ViewModels
             _navigationService = navigationService;
             DeleteCommand = new DelegateCommand(_Delete, _CanDelete);
             IncreaseGradeCommand = new DelegateCommand(_IncreaseGrade);
-            AddAssignmentCommand = new DelegateCommand(_AddAssignment);
+            AddAssignmentNavigationCommand = new DelegateCommand(_AddAssignmentNavigation);
             Students = new ObservableCollection<Student>
             {
             new Student { Name = "Allan Smith", Assignments = new List<Assignment>() },
@@ -65,7 +65,6 @@ namespace Grading_App.ViewModels
         public override void OnNavigatingFrom(NavigatingFromEventArgs e,
             Dictionary<string, object> viewModelState, bool suspending)
         {
-            e.Parameter = SelectedStudent;
             base.OnNavigatingFrom(e, viewModelState, suspending);
         }
 
@@ -87,7 +86,7 @@ namespace Grading_App.ViewModels
             get;
         }
 
-        public ICommand AddAssignmentCommand
+        public ICommand AddAssignmentNavigationCommand
         {
             get;
         }
@@ -114,9 +113,9 @@ namespace Grading_App.ViewModels
             }
         }
 
-        void _AddAssignment()
+        void _AddAssignmentNavigation()
         {
-            _navigationService.Navigate("AddAssignment", null);
+            _navigationService.Navigate("AddAssignment", SelectedStudent);
         }
 
     }
