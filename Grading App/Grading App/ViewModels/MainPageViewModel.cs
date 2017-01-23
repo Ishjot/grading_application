@@ -43,6 +43,8 @@ namespace Grading_App.ViewModels
             new Student { Name = "Tracy Mcalphin", Assignments = new List<Assignment>() }
             };
 
+            SelectedStudent = Students.FirstOrDefault();
+
             string name;
             for(int i = 0; i < Students.Count; i++)
             {
