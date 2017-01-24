@@ -17,14 +17,12 @@
             <ColumnDefinition Width="*" />
             <ColumnDefinition Width="*" />
         </Grid.ColumnDefinitions>
-        <TextBlock>
-                <Run Text="{Binding Name}" />
-        </TextBlock>
+        <TextBox Text="{Binding Name, Mode=TwoWay}" />
         <StackPanel Grid.Column="1" Orientation="Horizontal" HorizontalAlignment="Right">
             <TextBlock Margin="10" Text="Points: " />
             <TextBox Text="{Binding AchievedPoints, Mode=TwoWay}" />
             <TextBlock Text="/" />
-            <TextBlock Text="{Binding TotalPoints}" />
+            <TextBox Text="{Binding TotalPoints, Mode=TwoWay}" />
             <StackPanel Orientation="Horizontal">
                 <TextBlock Margin="10" Text="Percentage" />
                 <TextBlock Margin="10">

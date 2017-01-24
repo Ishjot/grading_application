@@ -32,7 +32,7 @@
                 </Grid.RowDefinitions>
                 <TextBlock Text="Students" FontSize="30" HorizontalAlignment="Center" />
                 <ListBox Name="StudentList" Grid.Row="1" ItemsSource="{Binding Students}"
-                         DisplayMemberPath="Name" SelectedValuePath="Assignments" SelectionChanged="ListBox_SelectionChanged" 
+                         DisplayMemberPath="Name" SelectedValuePath="Assignments"
                          SelectedItem="{Binding SelectedStudent, Mode=TwoWay}"/>
             </Grid>
         </Border>

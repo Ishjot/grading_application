@@ -1,6 +1,7 @@
 ﻿using Prism.Mvvm;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,11 +16,16 @@ namespace Grading_App.Models
             get { return _name; }
             set { SetProperty(ref _name, value); }
         }
-        IList<Assignment> _assignments;
-        public IList<Assignment> Assignments
+        ObservableCollection<Assignment> _assignments;
+        public ObservableCollection<Assignment> Assignments
         {
             get { return _assignments; }
             set { SetProperty(ref _assignments, value); }
+        }
+
+        public void AddAssignment(string name, int achievedPoints, int totalPoints)
+        {
+            _assignments.Add(new Assignment(name, achievedPoints, totalPoints));
         }
     }
 }

@@ -14,10 +14,5 @@ namespace Grading_App.Views
             this.InitializeComponent();
         }
 
-
-        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
-        }
     }
 }

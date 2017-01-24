@@ -1,4 +1,5 @@
 ﻿using Grading_App.Models;
+using Grading_App.Services;
 using Prism.Commands;
 using Prism.Windows.Mvvm;
 using Prism.Windows.Navigation;
@@ -12,12 +13,14 @@ namespace Grading_App.ViewModels
 {
     public class MainPageViewModel : ViewModelBase
     {
-        static Random Rand = new Random();
         readonly INavigationService _navigationService;
+        readonly IDataSeedService _dataSeedService;
 
-        public MainPageViewModel(INavigationService navigationService)
+        public MainPageViewModel(INavigationService navigationService,
+                                 IDataSeedService dataSeedService)
         {
             _navigationService = navigationService;
+            _dataSeedService = dataSeedService;
             DeleteCommand = new DelegateCommand(_Delete, _CanDelete);
             IncreaseGradeCommand = new DelegateCommand(_IncreaseGrade);
             AddAssignmentNavigationCommand = new DelegateCommand(_AddAssignmentNavigation);
@@ -28,39 +31,9 @@ namespace Grading_App.ViewModels
         {
             if (e.Parameter == null)
             {
-                Students = new ObservableCollection<Student>
-                {
-                new Student { Name = "Allan Smith", Assignments = new List<Assignment>() },
-                new Student { Name = "Denise Orozco", Assignments = new List<Assignment>() },
-                new Student { Name = "Drew Seward", Assignments = new List<Assignment>() },
-                new Student { Name = "Ishjot Walia", Assignments = new List<Assignment>() },
-                new Student { Name = "Jim Gilmartin", Assignments = new List<Assignment>() },
-                new Student { Name = "Juan J. Ramirez", Assignments = new List<Assignment>() },
-                new Student { Name = "Kelli Kearns", Assignments = new List<Assignment>() },
-                new Student { Name = "Lucas Rowley", Assignments = new List<Assignment>() },
-                new Student { Name = "Nolan Blew", Assignments = new List<Assignment>() },
-                new Student { Name = "Riley Herman", Assignments = new List<Assignment>() },
-                new Student { Name = "Sam Close", Assignments = new List<Assignment>() },
-                new Student { Name = "Shayon Javadizadeh", Assignments = new List<Assignment>() },
-                new Student { Name = "Terrence Cole", Assignments = new List<Assignment>() },
-                new Student { Name = "Tim Weyel", Assignments = new List<Assignment>() },
-                new Student { Name = "Zac Stringham", Assignments = new List<Assignment>() },
-                new Student { Name = "Crystal Ophaso", Assignments = new List<Assignment>() },
-                new Student { Name = "Matthre Glodack", Assignments = new List<Assignment>() },
-                new Student { Name = "Tracy Mcalphin", Assignments = new List<Assignment>() }
-                };
-
-                SelectedStudent = Students.FirstOrDefault();
-
-                string name;
-                for (int i = 0; i < Students.Count; i++)
-                {
-                    for (int j = 0; j < 20; j++)
-                    {
-                        name = "Assignment #" + (j + 1);
-                        Students.ElementAt(i).Assignments.Add(new Assignment(name, Rand.Next(10, 100)));
-                    }
-                }
+                _seedValues = _dataSeedService.Seed();
+                Students = _seedValues.Item1;
+                SelectedStudent = _seedValues.Item2;
             }
             else
             {
@@ -82,11 +55,15 @@ namespace Grading_App.ViewModels
 
         public ObservableCollection<Student> Students { get; set; }
         Student _selectedStudent;
+        private Tuple<ObservableCollection<Student>, Student> _seedValues;
+
         public Student SelectedStudent
         {
             get { return _selectedStudent; }
             set { SetProperty(ref _selectedStudent, value); }
         }
+
+        public DataSeedService SeedValues { get; private set; }
 
         public ICommand DeleteCommand
         {

@@ -17,6 +17,13 @@ namespace Grading_App.Models
             AchievedPoints = Rand.Next(0, totalPoints);
         }
 
+        public Assignment(string name, int achievedPoints, int totalPoints)
+        {
+            Name = name;
+            TotalPoints = totalPoints;
+            AchievedPoints = achievedPoints;
+        }
+
         public void addAchievedPoints(int change)
         {
             if (AchievedPoints + change > TotalPoints)

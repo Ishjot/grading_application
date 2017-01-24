@@ -12,7 +12,8 @@
     xmlns:behaviors="using:Cimbalino.Toolkit.Behaviors"
     mc:Ignorable="d" >
 
-    <ListView ItemsSource="{Binding ElementName=AssignmentListViewControl, Path=ItemsSource}"
+    <ListView ItemsSource="{Binding ElementName=AssignmentListViewControl, Path=ItemsSource,
+                            Mode=TwoWay}"
               HorizontalAlignment="Stretch"
               VerticalAlignment="Center"
               HorizontalContentAlignment="Stretch" >

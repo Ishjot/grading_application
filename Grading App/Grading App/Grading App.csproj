@@ -107,6 +107,8 @@
     <Compile Include="Converters\ValueConverterChain.cs" />
     <Compile Include="Models\Assignment.cs" />
     <Compile Include="Models\Student.cs" />
+    <Compile Include="Services\DataSeedService.cs" />
+    <Compile Include="Services\IDataSeedService.cs" />
     <Compile Include="ViewModels\AddAssignmentPageViewModel.cs" />
     <Compile Include="ViewModels\MainPageViewModel.cs" />
     <Compile Include="Views\AddAssignmentPage.xaml.cs">

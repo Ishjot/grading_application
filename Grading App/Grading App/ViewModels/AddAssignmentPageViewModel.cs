@@ -5,6 +5,7 @@ using Prism.Windows.Navigation;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.ComponentModel;
 using System.Windows.Input;
 
 namespace Grading_App.ViewModels
@@ -18,6 +19,7 @@ namespace Grading_App.ViewModels
         {
             _navigationService = navigationService;
             MainPageNavigationCommand = new DelegateCommand(_MainPageNavigation);
+            AddAssignmentCommand = new DelegateCommand(_AddAssignment);
         }
 
         public override void OnNavigatedTo(NavigatedToEventArgs e, Dictionary<string, object> viewModelState)
@@ -55,6 +57,16 @@ namespace Grading_App.ViewModels
         {
             _navigationService.Navigate("Main", 
                 new Tuple<ObservableCollection<Student>, Student>(Students, SelectedStudent));
+        }
+
+        public ICommand AddAssignmentCommand
+        {
+            get;
+        }
+
+        void _AddAssignment()
+        {
+            SelectedStudent.AddAssignment("New", 0, 100);
         }
 
     }

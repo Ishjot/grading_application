@@ -21,17 +21,23 @@
             <RowDefinition Height="6*" />
             <RowDefinition Height="1*" />
         </Grid.RowDefinitions>
-        <Border>
-            <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                <TextBlock Text="Hello, World!" VerticalAlignment="Center" HorizontalAlignment="Center" />
-                <Button Content="Back To Gradebook" Margin="10" Command="{Binding MainPageNavigationCommand}" />
-            </StackPanel>
+        <Border DataContext="{Binding SelectedStudent}">
+            <TextBlock VerticalAlignment="Center" HorizontalAlignment="Center" 
+                       Text="{Binding Name}" FontSize="20" />
         </Border>
-        <Border Grid.Column="1" DataContext="{Binding SelectedStudent}" >
-            <controls:AssignmentsListView Grid.Row="1" ItemsSource="{Binding Assignments}"
-                                              HorizontalAlignment="Stretch"
-                                              VerticalAlignment="Center"
-                                              HorizontalContentAlignment="Stretch" />
+        <Border Grid.Row="1">
+            <Button Content="Back To Gradebook" Margin="10" 
+                    Command="{Binding MainPageNavigationCommand}" />
+        </Border>
+        <Border Grid.Column="1" Grid.Row="1">
+            <Button HorizontalAlignment="Center" VerticalAlignment="Center" 
+                    Content="Add Assignment" Margin="10" 
+                    Command="{Binding AddAssignmentCommand}" />
+        </Border>
+        <Border Grid.Column="1" DataContext="{Binding SelectedStudent, Mode=TwoWay}" >
+            <controls:AssignmentsListView ItemsSource="{Binding Assignments, Mode=TwoWay}"
+                                          HorizontalAlignment="Stretch"
+                                          VerticalAlignment="Center"/>
         </Border>
     </Grid>
 </Page>

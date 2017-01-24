@@ -1,9 +1,9 @@
 ﻿using System.Threading.Tasks;
 using Windows.ApplicationModel.Activation;
 using Windows.UI.Xaml;
-using Windows.UI.Xaml.Controls;
 using Prism.Unity.Windows;
-using Prism.Windows.Navigation;
+using Grading_App.Services;
+using Microsoft.Practices.Unity;
 
 namespace Grading_App
 {
@@ -29,10 +29,12 @@ namespace Grading_App
             return Task.FromResult<object>(null);
         }
 
-        protected override Task OnInitializeAsync(IActivatedEventArgs args)
+        protected override async Task OnInitializeAsync(IActivatedEventArgs args)
         {
-            //Container.RegisterInstance<INavigationService>(NavigationService);
-            return base.OnInitializeAsync(args);
+            await base.OnInitializeAsync(args);
+
+            Container
+                .RegisterType<IDataSeedService, DataSeedService>();
         }
     }
 }
