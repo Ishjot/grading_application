@@ -2,7 +2,9 @@
 using Prism.Commands;
 using Prism.Windows.Mvvm;
 using Prism.Windows.Navigation;
+using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Windows.Input;
 
 namespace Grading_App.ViewModels
@@ -24,7 +26,10 @@ namespace Grading_App.ViewModels
 
             if (e.Parameter != null)
             {
-                SelectedStudent = e.Parameter as Student;
+                Students = (e.Parameter as Tuple<ObservableCollection<Student>, Student>).Item1
+                    as ObservableCollection<Student>;
+                SelectedStudent = (e.Parameter as Tuple<ObservableCollection<Student>, Student>).Item2
+                    as Student;
             }
         }
 
@@ -39,6 +44,8 @@ namespace Grading_App.ViewModels
             set { SetProperty(ref _selectedStudent, value); }
         }
 
+        public ObservableCollection<Student> Students { get; set; }
+
         public ICommand MainPageNavigationCommand
         {
             get;
@@ -46,7 +53,8 @@ namespace Grading_App.ViewModels
 
         void _MainPageNavigation()
         {
-            _navigationService.Navigate("Main", SelectedStudent);
+            _navigationService.Navigate("Main", 
+                new Tuple<ObservableCollection<Student>, Student>(Students, SelectedStudent));
         }
 
     }

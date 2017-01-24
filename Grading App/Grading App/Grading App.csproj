@@ -95,6 +95,12 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\AssignmentListViewItem.xaml.cs">
+      <DependentUpon>AssignmentListViewItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\AssignmentsListView.xaml.cs">
+      <DependentUpon>AssignmentsListView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Converters\DoubleToFormattedStringConverter.cs" />
     <Compile Include="Converters\PercentageToGradeConverter.cs" />
     <Compile Include="Converters\PointsToPercentageConverter.cs" />
@@ -132,6 +138,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Controls\AssignmentListViewItem.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\AssignmentsListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\AddAssignmentPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
